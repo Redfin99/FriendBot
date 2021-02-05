@@ -4,7 +4,7 @@ export function commandHandler(msg) {
     let tokens = msg.content.split(' ');
     let prefix = tokens.shift();
     
-    if (prefix.charAt(0) !== '!') {
+    if (prefix.charAt(0) !== '>' || msg.author.bot) {
         return;
     }
     prefix = prefix.substring(1);
@@ -20,11 +20,11 @@ export function reactCommandHandler(reaction) {
     const reactMap = new Map([
         ['👍', 'agree'],
         ['🦆', 'duck'],
-    ])
+    ]);
     const reactName = reaction.emoji.name;
     const command = reactMap.get(reactName);
     
-    try {
+    if (command) {
         commands[command](reaction.message, '');
     }
 }
