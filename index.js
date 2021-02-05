@@ -1,18 +1,20 @@
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.login('ODA0OTg4NDg3MzU0NDE3MTYy.YBUV8w.0mQ-RrmF4wd4FV-EYgFxT1FwaqI');
+require('dotenv').config();
+client.login(process.env.token);
 
 client.on('ready', readyDiscord);
 
 function readyDiscord() {
-    console.log('<3');
+    console.log('FriendBot Engaged');
 }
 
 client.on('message', checkMessage);
 
 const replyList = [
-    'I agree',
+    'I agree.',
     'Agree I do.',
     '100%.',
     'True.',
